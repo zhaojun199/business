@@ -2,10 +2,13 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Button, Cell } from 'mint-ui'
+// import 'mint-ui/lib/style.css'
+import { Button, Cell, Tabbar, TabItem } from 'mint-ui'
 
-Vue.use(Button)
-Vue.use(Cell)
+Vue.component(Button.name, Button)
+Vue.component(Cell.name, Cell)
+Vue.component(Tabbar.name, Tabbar)
+Vue.component(TabItem.name, TabItem)
 
 Vue.config.productionTip = false
 
