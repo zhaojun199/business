@@ -1,27 +1,52 @@
 <template>
-	<mt-tabbar>
-		<mt-tab-item id="外卖">
-			<img slot="icon" src="">
-			外卖
-		</mt-tab-item>
-		<mt-tab-item id="订单">
-			<img slot="icon" src="">
-			订单
-		</mt-tab-item>
-		<mt-tab-item id="发现">
-			<img slot="icon" src="">
-			发现
-		</mt-tab-item>
-		<mt-tab-item id="我的">
-			<img slot="icon" src="">
-			我的
-		</mt-tab-item>
-	</mt-tabbar>
-  <!-- <div id="app">
-	<div id="nav">
-	  <router-link to="/">Home</router-link> |
-	  <router-link to="/about">About</router-link>
+	<div>
+		<router-view/>
+		<mt-tabbar v-model="selected">
+			<mt-tab-item id="/home">
+				<svg class="iconfont" aria-hidden="true">
+					<use
+						:xlink:href="selected === '/home' ? '#icon-shouye' : '#icon-shouye1'">
+					</use>
+				</svg>
+				<div class="tab-title">首页</div>
+			</mt-tab-item>
+			<mt-tab-item id="/member">
+				<svg class="iconfont" aria-hidden="true">
+					<use
+						:xlink:href="selected === '/member' ? '#icon-huiyuanguanli' : '#icon-huiyuan'">
+					</use>
+				</svg>
+				<div class="tab-title">会员</div>
+			</mt-tab-item>
+			<mt-tab-item id="/goods">
+				<svg class="iconfont" aria-hidden="true">
+					<use
+						:xlink:href="selected === '/goods' ? '#icon-shangpinguanli' : '#icon-shangpin'">
+					</use>
+				</svg>
+				<div class="tab-title">商品</div>
+			</mt-tab-item>
+			<!-- <mt-tab-item id="我的">
+				<img slot="icon" src="">
+				我的
+			</mt-tab-item> -->
+		</mt-tabbar>
 	</div>
-	<router-view/>
-  </div> -->
 </template>
+<script>
+export default {
+	name: 'Frame',
+	data() {
+		return {
+			selected: '/home',
+		};
+	},
+	watch: {
+		selected(path) {
+			this.$router.push(path)
+		}
+	},
+}
+</script>
+<style lang="less">
+</style>

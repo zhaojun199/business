@@ -15,4 +15,12 @@ context
 
 Vue.use(Router)
 
-export default new Router({ routes })
+const router = new Router({ routes })
+router.beforeEach((to, from, next) => {
+	const { title } = to.meta
+	if (title) {
+		document.title = `${title} - 依家布艺`
+	}
+	next()
+})
+export default router

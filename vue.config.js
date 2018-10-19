@@ -16,10 +16,11 @@ module.exports = {
 	},
 	configureWebpack: config => {
 		config.resolve = {
-			extensions: ['.js', '.vue', '.json',".css"],
+			extensions: ['.js', '.vue', '.json', ".css", ".less"],
 			alias: {
 				'@': resolve('src'),
 				'@home': resolve('src/views'),
+				'@static': resolve('static'),
 			}
 		}
 	}
