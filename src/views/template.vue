@@ -10,6 +10,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default {
 	name: 'member',
 	components: {
+		HelloWorld,
 	},
 	data() {
 		return {};
