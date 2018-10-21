@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../../static/css/basic';
+@import '../../../static/css/variable';
 .member-plus {
 	position: fixed;
     right: 3rem;
