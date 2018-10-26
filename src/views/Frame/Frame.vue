@@ -49,4 +49,7 @@ export default {
 }
 </script>
 <style lang="less">
+.tab-title {
+	padding: .1rem;
+}
 </style>

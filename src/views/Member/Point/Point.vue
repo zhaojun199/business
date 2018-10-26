@@ -27,6 +27,8 @@
 <script>
 export default {
 	name: 'member-add',
+	components: {
+	},
 	data() {
 		return {
 			username: '',
