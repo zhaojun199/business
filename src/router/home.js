@@ -4,6 +4,7 @@ import Member from '@home/Member/Member'
 
 export default [{
 	path: '/',
+	redirect: '/home',
 	name: 'frame',
 	component: Frame,
 	meta: {

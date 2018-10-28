@@ -20,7 +20,7 @@
 							handler: () => this.$messagebox('delete')
 						}]"
 						is-link
-						href="/#/member/zhaojun/point"
+						href="/#/member/zhaojun/information"
 					>2 ∴</mt-cell-swipe>
 					<mt-cell title="Aaron" value="2 ∴"/>
 					<mt-cell title="Alden" value="24 ∴"/>

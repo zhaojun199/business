@@ -38,7 +38,7 @@ export default {
 	name: 'Frame',
 	data() {
 		return {
-			selected: '/home',
+			selected: this.$route.path,
 		};
 	},
 	watch: {
