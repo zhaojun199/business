@@ -7,38 +7,38 @@
 			</mt-swipe-item>
 		</mt-swipe>
 		<div class="item-group">
-			<div class="item-cell">
+			<router-link class="item-cell" to="/goods">
 				<div class="item-body">
 					<div class="item-icon">
 						<i class="iconfont icon-huoliutongzhi"></i>
 					</div>
 					<div class="item-title">进货</div>
 				</div>
-			</div>
-			<div class="item-cell">
+			</router-link>
+			<router-link class="item-cell" to="/goods">
 				<div class="item-body">
 					<div class="item-icon">
 						<i class="iconfont icon-kucun"></i>
 					</div>
 					<div class="item-title">库存</div>
 				</div>
-			</div>
-			<div class="item-cell">
+			</router-link>
+			<router-link class="item-cell" to="/goods">
 				<div class="item-body">
 					<div class="item-icon">
 						<i class="iconfont icon-3"></i>
 					</div>
 					<div class="item-title">流水</div>
 				</div>
-			</div>
-			<div class="item-cell">
+			</router-link>
+			<router-link class="item-cell" to="/goods">
 				<div class="item-body">
 					<div class="item-icon">
 						<i class="iconfont icon-qunfengzijintixian"></i>
 					</div>
 					<div class="item-title">收益</div>
 				</div>
-			</div>
+			</router-link>
 		</div>
 		<div style="height: 10px"></div>
 		<div class="item-group">
@@ -78,7 +78,7 @@ export default {
 	.item-cell {
 		flex: 1;
 		display: flex;
-		@wid: 25%;
+		@wid: 50%;
 		width: @wid;
 		max-width: @wid;
 		min-width: @wid;
@@ -89,16 +89,16 @@ export default {
 		align-items: center;
 		justify-content: center;
 		.item-icon {
-    		padding: .8rem;
+			padding: .8rem;
 			.iconfont {
 				@len: 2.8rem;
 				font-size: @len;
-			    width: @len;
-			    height: @len;
-			    line-height: @len;
-			    &:first {
-			    	color: orange;
-			    }
+				width: @len;
+				height: @len;
+				line-height: @len;
+				&:first {
+					color: orange;
+				}
 			}
 		}
 		.item-title {

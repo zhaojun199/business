@@ -1,13 +1,15 @@
+@import './variable';
 html, body {
 	margin: 0;
 	height: 100%;
 }
 html {
-	font-size: 62.5%;
+	font-size: 10px;
 }
 body {
 	font-size: 1.5rem;
 }
+// form
 .bs-form {
 	font-size: 1.6rem;
 	background: #fff;
@@ -18,11 +20,11 @@ body {
 		background-size: 120% .1rem;
 		background-repeat: no-repeat;
 		background-position: top left;
-    	background-origin: content-box;
+		background-origin: content-box;
 		display: flex;
 		align-items: center;
 		min-height: 4.5rem;
-    	box-sizing: border-box;
+		box-sizing: border-box;
 		.bs-form-label {
 			width: 10.5rem;
 		}
@@ -33,6 +35,50 @@ body {
 }
 .bs-more {
 	margin: 0 4px 0 6px;
-    top: 1px;
-    position: relative;
+	top: 1px;
+	position: relative;
+}
+// list
+.bs-plus {
+	position: fixed;
+	right: 2.1rem;
+	bottom: 8rem;
+	color: @primary-color;
+	filter: drop-shadow(0px 0px 2px @primary-color);
+	.iconfont {
+		font-size: 4.5rem;
+	}
+}
+.bs-no-data {
+	.iconfont {
+		@len: 8rem;
+		width: @len;
+		height: @len;
+		margin-top: 20vh;
+	}
+	.bs-no-text {
+		color: #847777;
+		padding: 2.8rem 0 1.8rem;
+		font-size: 1.4rem;
+	}
+}
+// search
+.mint-search {
+	.mint-searchbar {
+		background: @primary-color;
+	}
+}
+.back-search {
+	.mint-search {
+		display: inline-block;
+		width: calc(100% - 3.3rem);
+		float: right;
+	}
+}
+// clearfix
+.clearfix {
+	&:after {
+		content: ' ';
+		clear: both;
+	}
 }

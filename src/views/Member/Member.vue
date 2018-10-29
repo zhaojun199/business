@@ -5,7 +5,7 @@
 			cancel-text="取消"
 			placeholder="搜索">
 		</mt-search>
-		<template v-if="Math.random() < 1 || list.length">
+		<template v-if="Math.random() < 0.5 || list.length">
 			<mt-index-list class="member-list">
 				<mt-index-section index="A">
 					<mt-cell-swipe
@@ -49,30 +49,29 @@
 				</mt-index-section>
 			</mt-index-list>
 		</template>
-		<div v-else class="member-no-data">
+		<div v-else class="bs-no-data">
 			<svg class="iconfont" aria-hidden="true">
 				<use xlink:href="#icon-huiyuanguanli1"/>
 			</svg>
-			<div class="member-no-text">该条件下暂无会员</div>
-			<div class="member-no-btn">
-				<mt-button
-					type="primary"
-					size="small"
-					@click="addMemeber"
-				>立即添加</mt-button>
-			</div>
+			<div class="bs-no-text">该条件下暂无会员</div>
+			<mt-button
+				type="primary"
+				size="small"
+				@click="addMemeber"
+			>立即添加</mt-button>
 		</div>
-		<div class="member-plus" @click="addMemeber">
+		<div class="bs-plus" @click="addMemeber">
 			<i class="iconfont icon-jia"></i>
 		</div>
 	</div>
 </template>
 
 <script>
-
+import Back from '@/components/Back/Back.vue';
 export default {
 	name: 'member',
 	components: {
+		Back,
 	},
 	data() {
 		return {
@@ -93,30 +92,6 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../../static/css/variable';
-.member-plus {
-	position: fixed;
-	right: 2.1rem;
-	bottom: 8rem;
-	color: @primary-color;
-	filter: drop-shadow(0px 0px 2px @primary-color);
-	.iconfont {
-		font-size: 4.5rem;
-	}
-}
-.member-no-data {
-	.iconfont {
-		@len: 8rem;
-		width: @len;
-		height: @len;
-		margin-top: 20vh;
-	}
-	.member-no-text {
-		color: #847777;
-		padding: 2.8rem 0 1.8rem;
-		font-size: 1.4rem;
-	}
-}
 .member-list {
 	text-align: left;
 }
