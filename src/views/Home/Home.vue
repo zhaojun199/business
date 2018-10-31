@@ -7,7 +7,7 @@
 			</mt-swipe-item>
 		</mt-swipe>
 		<div class="item-group">
-			<router-link class="item-cell" to="/goods">
+			<router-link class="item-cell" to="/goods/list">
 				<div class="item-body">
 					<div class="item-icon">
 						<i class="iconfont icon-huoliutongzhi"></i>
@@ -15,7 +15,7 @@
 					<div class="item-title">进货</div>
 				</div>
 			</router-link>
-			<router-link class="item-cell" to="/goods">
+			<router-link class="item-cell" to="/goods/list">
 				<div class="item-body">
 					<div class="item-icon">
 						<i class="iconfont icon-kucun"></i>
@@ -23,7 +23,7 @@
 					<div class="item-title">库存</div>
 				</div>
 			</router-link>
-			<router-link class="item-cell" to="/goods">
+			<router-link class="item-cell" to="/goods/list">
 				<div class="item-body">
 					<div class="item-icon">
 						<i class="iconfont icon-3"></i>
@@ -75,6 +75,7 @@ export default {
 	display: flex;
 	flex-wrap: wrap;
 	background: #fff;
+	text-align: center;
 	.item-cell {
 		flex: 1;
 		display: flex;

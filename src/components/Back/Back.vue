@@ -1,5 +1,5 @@
 <template>
-	<div class="back">
+	<div class="back" @click="$router.go(-1)">
 		<i class="iconfont icon-you"/>
 		<!-- <div>{{title}}</div> -->
 	</div>
@@ -28,6 +28,7 @@ export default {
 	left: 0;
 	background: @primary-color;
 	color: #fff;
+	z-index: 9;
 	.iconfont {
 		font-size: 2.5rem;
 	}
