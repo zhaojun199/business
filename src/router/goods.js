@@ -28,7 +28,7 @@ export default [{
 			path: 'classify',
 			component: Classify,
 			meta: {
-				title: '分类',
+				title: '类目选择',
 			},
 		},
 	]
