@@ -1,6 +1,20 @@
+// variable
 // @primary-color: #090723;
-@primary-color: #f76349;
-@shadow-color: rgba(0, 0, 0, .15);
-@grey-color: rgba(200, 200, 200, .15);
-@active-bg-color: #fff;
-@active-text-color: rgba(@primary-color, .8);
+@primary-color			: #f76349;
+@black-color			: #000;
+@sub-black-color		: rgba(@black-color, .35);
+@shadow-color			: rgba(0, 0, 0, .15);
+@grey-color				: rgba(200, 200, 200, .15);
+@active-bg-color		: #fff;
+@active-text-color		: rgba(@primary-color, .8);
+@bg-color				: #fdfdfd;
+
+// mixin
+.ellipsis() {
+	overflow: hidden;
+	word-wrap: break-word;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+				

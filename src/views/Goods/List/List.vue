@@ -8,8 +8,13 @@
 				placeholder="搜索">
 			</mt-search>
 		</div>
-		<template v-if="Math.random() > 1 || list.length">
-			
+		<template v-if="Math.random() < 1 || list.length">
+			<List></List>
+			<List is-actived></List>
+			<mt-cell title="标题文字">
+				<span>icon 是图片</span>
+				<img slot="icon" src="../../../assets/logo.png" width="24" height="24">
+			</mt-cell>
 		</template>
 		<div v-else class="bs-no-data">
 			<svg class="iconfont" aria-hidden="true">
@@ -30,10 +35,12 @@
 
 <script>
 import Back from '@/components/Back/Back.vue';
+import List from '@/components/List/List.vue';
 export default {
 	name: 'goods-list',
 	components: {
 		Back,
+		List,
 	},
 	data() {
 		return {
