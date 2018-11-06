@@ -1,5 +1,6 @@
 <template>
 	<div class="member-add">
+		<mt-field label="编号" v-model="number"/>
 		<mt-field label="姓名" placeholder="请输入姓名" v-model="username"/>
 		<div class="bs-form">
 			<div class="bs-form-cell" @click="showSex">
@@ -29,6 +30,7 @@ export default {
 	name: 'member-add',
 	data() {
 		return {
+			number: '1',
 			username: '',
 			sex_text: '男',
 			sex_value: 1,

@@ -5,16 +5,16 @@
 		</div>
 		<div class="bs-list-wrapper">
 			<div class="bs-list-title">
-				<div class="bs-list-title-primary">11111111 1111111 11111111111</div>
-				<div class="bs-list-title-sub">xxxxxxxxxxxxxxxxx</div>
+				<div class="bs-list-title-primary">{{title}}</div>
+				<div class="bs-list-title-sub">{{subTitle}}</div>
 			</div>
 			<div class="bs-list-content">
-				<div class="bs-list-content-primary">truhdfgnthdfgnbfghrthfd</div>
-				<div class="bs-list-content-sub">686bmbk79mchh</div>
+				<div class="bs-list-content-primary">{{content}}</div>
+				<div class="bs-list-content-sub">{{subContent}}</div>
 			</div>
 			<div class="bs-list-extra">
-				<div class="bs-list-extra-primary">4</div>
-				<div class="bs-list-extra-sub">6</div>
+				<div class="bs-list-extra-primary">{{extra}}</div>
+				<div class="bs-list-extra-sub">{{subExtra}}</div>
 			</div>
 		</div>
 	</div>
@@ -27,7 +27,7 @@ export default {
 		icon: String,
 		title: String,
 		subTitle: String,
-		cotent: String,
+		content: String,
 		subContent: String,
 		extra: String,
 		subExtra: String,
@@ -50,15 +50,14 @@ export default {
 		background: @grey-color;
 	}
 	.bs-list-icon {
-		margin: 0.7rem .7rem 0.7rem 1.5rem;
+		margin: .7rem .7rem .7rem 1.5rem;
 		display: flex;
 		align-items: center;
 		border-radius: .6rem;
 		overflow: hidden;
 		img {
-			@len: 4.8rem;
-			width: @len;
-			height: @len;
+			width: 4.8rem;
+			height: 4.2rem;
 		}
 	}
 	.bs-list-wrapper {
@@ -96,11 +95,11 @@ export default {
 			margin: 0 1rem;
 			.bs-list-content-primary {
 				height: 50%;
-				padding-top: 1.2rem;
+				padding-top: 1rem;
 				.ellipsis();
 			}
 			.bs-list-content-sub {
-				padding-top: .7rem;
+				padding-top: .5rem;
 				color: @sub-black-color;
 				.ellipsis();
 			}

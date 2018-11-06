@@ -9,12 +9,22 @@
 			</mt-search>
 		</div>
 		<template v-if="Math.random() < 1 || list.length">
-			<List></List>
-			<List is-actived></List>
-			<mt-cell title="标题文字">
-				<span>icon 是图片</span>
-				<img slot="icon" src="../../../assets/logo.png" width="24" height="24">
-			</mt-cell>
+			<List
+				:title="'title'"
+				:subTitle="'subTitle'"
+				:content="'content'"
+				:subContent="'subContent'"
+				:extra="'extra'"
+				@click.native="toDetail(1)"
+			></List>
+			<List
+				:title="'title'"
+				:subTitle="'subTitle'"
+				:content="'content'"
+				:subContent="'subContent'"
+				:extra="'extra'"
+				is-actived
+			></List>
 		</template>
 		<div v-else class="bs-no-data">
 			<svg class="iconfont" aria-hidden="true">
@@ -56,6 +66,9 @@ export default {
 		addMemeber() {
 			this.$router.push('/goods/add')
 		},
+		toDetail(id) {
+			this.$router.push(`/goods/detail/${id}`)
+		}
 	}
 }
 </script>
