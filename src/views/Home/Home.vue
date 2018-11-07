@@ -31,7 +31,7 @@
 					<div class="item-title">流水</div>
 				</div>
 			</router-link>
-			<router-link class="item-cell" to="/goods">
+			<router-link class="item-cell" to="/earn/list">
 				<div class="item-body">
 					<div class="item-icon">
 						<i class="iconfont icon-qunfengzijintixian"></i>

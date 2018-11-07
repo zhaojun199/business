@@ -1,6 +1,7 @@
 import Member from '@home/Member/Add/Add.vue'
 import Information from '@home/Member/Information/Information.vue'
 import Point from '@home/Member/Point/Point.vue'
+import Cost from '@home/Member/Cost/Cost.vue'
 
 export default [{
 	path: '/member/add',
@@ -22,5 +23,12 @@ export default [{
 	component: Point,
 	meta: {
 		title: '积分变更'
+	},
+}, {
+	path: '/member/:user/cost',
+	name: 'member-cost',
+	component: Cost,
+	meta: {
+		title: '消费'
 	},
 }]
