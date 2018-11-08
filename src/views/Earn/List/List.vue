@@ -1,5 +1,5 @@
 <template>
-	<div class="member">
+	<div class="earn">
 		<div class="clearfix back-wrapper">
 			<Back />
 			<mt-search
@@ -8,11 +8,11 @@
 				placeholder="搜索">
 			</mt-search>
 		</div>
-		<div>
+		<div class="earn-screen">
 			<span @click="selectDate('start')">起始日期</span>
 			~
 			<span @click="selectDate('end')">结束日期</span>
-			<span>筛选</span>
+			<span class="earn-more">筛选♢</span>
 			<mt-datetime-picker
 				ref="start_picker"
 				type="date"
@@ -26,12 +26,12 @@
 			>
 			</mt-datetime-picker>
 		</div>
-		<div>
-			<span>销售额</span>
-			<span>100</span>
-			<span>利润</span>
-			<span>200</span>
-			<span>分析</span>
+		<div class="earn-screen">
+			<span class="earn-label">销售额：</span>
+			<span class="earn-field">100</span>
+			<span class="earn-label">利润：</span>
+			<span class="earn-field">200</span>
+			<span class="earn-more">分析+</span>
 		</div>
 		<template v-if="Math.random() < 1 || list.length">
 			<List
@@ -64,7 +64,7 @@
 import Back from '@/components/Back/Back.vue';
 import List from '@/components/List/List.vue';
 export default {
-	name: 'goods-list',
+	name: 'earn-list',
 	components: {
 		Back,
 		List,
@@ -93,7 +93,27 @@ export default {
 </script>
 
 <style lang="less">
-.member-list {
-	text-align: left;
+@import '../../../../static/css/variable';
+.earn-screen {
+	font-size: 1.6rem;
+	background: @assistant-color;
+	color: #fff;
+	padding: .4rem;
+}
+.earn-label {
+	font-weight: 700;
+}
+.earn-field {
+	color: @primary-color;
+	margin-right: 1rem;
+}
+.earn-more {
+	float: right;
+	font-size: 1.4rem;
+	color: #fff;
+	margin-right: 1rem;
+	border: @primary-color .1rem dotted;
+	border-radius: .3rem;
+	padding: 0 .4rem;
 }
 </style>
