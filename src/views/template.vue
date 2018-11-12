@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Back from '@/components/Back/Back.vue';
+import Back from '@/components/Back/Back.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
@@ -19,7 +19,7 @@ export default {
 		HelloWorld,
 	},
 	data() {
-		return {};
+		return {}
 	},
 }
 </script>
