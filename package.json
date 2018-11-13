@@ -9,6 +9,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "better-scroll": "^1.13.2",
     "mint-ui": "^2.2.13",
     "rxjs": "^6.3.3",
     "vue": "^2.5.17",
