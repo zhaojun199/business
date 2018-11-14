@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>依家布艺</title>
-    <script>window.log=console.log</script>
+    <script>
+      var log = function() {
+        var args = arguments;
+        if (log.showLog) {
+          var t = new Date().toLocaleTimeString();
+          console.log(t,': ', ...args);
+        }
+      };
+      log.showLog = true;
+    </script>
     <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_882127_6crrjy7l73y.css"/>
     <script type="text/javascript" src="http://at.alicdn.com/t/font_881463_qrrv9lk27y.js"></script>
   </head>

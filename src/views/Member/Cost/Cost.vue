@@ -5,18 +5,22 @@
 			<div class="back-title">{{$route.meta.title}}</div>
 		</div>
 		<div class="goods">
-			<div class="cate-wrapper">
+			<div class="cate-wrapper" ref="cateWrapper">
 				<ul>
-					<li v-for="item in goods" class="cate-item">
+					<li
+						v-for="(item, index) in goods"
+						class="cate-item"
+						:class="{'cate-current': currentIndex === index}"
+					>
 						<span class="goods-text">
 							{{item.name}}
 						</span>
 					</li>
 				</ul>
 			</div>
-			<div class="goods-wrapper">
+			<div class="goods-wrapper" ref="goodsWrapper">
 				<ul>
-					<li v-for="item in goods" class="goods-list">
+					<li v-for="item in goods" class="goods-list" ref="goodList">
 						<h1 class="goods-title">{{item.name}}</h1>
 						<ul>
 							<li v-for="food in item.foods" class="goods-item">
@@ -35,7 +39,10 @@
 										</span>
 										<div class="goods-price">
 											<span class="goods-price-now">￥{{food.price}}</span>
-											<span class="goods-price-old"></span>
+											<span
+												class="goods-price-old"
+												v-show="food.oldPrice"
+											>￥{{food.oldPrice}}</span>
 										</div>
 									</div>
 								</div>
@@ -59,15 +66,57 @@ export default {
 		Back,
 	},
 	data() {
-		log(goods)
 		return {
-			goods: goods.goods,
+			goods: [],
+			listHeight: [],
+			scrollY: 0,
 		}
 	},
+	computed: {
+		currentIndex() {
+			let index = 0;
+			this.listHeight.some((item, i) => {
+				const height1 = item
+				const height2 = this.listHeight[i + 1]
+				if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
+					index = i
+					return true
+				}
+				return false
+			})
+			return index
+		} 
+	},
 	methods: {
+		getGoodList() {
+			this.goods = goods.goods
+			this.$nextTick(() => {
+				this.initScroll()
+				this.calcHeight()
+			})
+		},
 		initScroll() {
-
+			this.cateScroll = new BScroll(this.$refs.cateWrapper, { click: true })
+			this.goodsScroll = new BScroll(this.$refs.goodsWrapper, {
+				click: true,
+				probeType: 3,	//	实时监控滚动位置
+			})
+			this.goodsScroll.on('scroll', pos => {
+				this.scrollY = Math.abs(Math.round(pos.y))
+			})
+		},
+		calcHeight() {
+			const goodList = this.$refs.goodList
+			let height = 0
+			this.listHeight.push(height)
+			goodList.forEach((item) => {
+				height += item.clientHeight
+				this.listHeight.push(height)
+			})
 		}
+	},
+	created() {
+		this.getGoodList()
 	}
 }
 </script>
@@ -91,13 +140,19 @@ export default {
 				height: 54px;
 				line-height: 14px;
     			margin: 12px;
-				.border();
+				&.cate-current {
+					background: #fff;
+          			font-weight: 700;
+          			padding: 0 12px;
+          			margin: 0;
+				}
 				.goods-text {
 					display: table-cell;
 					height: 54px;
 					width: 56px;
 					vertical-align: middle;
 					font-size: 12px;
+    				font-weight: 600;
 				}
 			}
 		}
@@ -117,6 +172,9 @@ export default {
 				display: flex;
 				margin: 18px;
 				padding-bottom: 18px;
+				.cate-current {
+					background: red;
+				}
 				.border();
 				&:last-child {
 					.border-none();
@@ -142,6 +200,7 @@ export default {
 						color: rgb(147, 157, 159);
 					}
 					.goods-desc {
+						line-height: 14px;
 						margin-bottom: 8px;
 					}
 					.goods-extra {
