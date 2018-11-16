@@ -11,6 +11,7 @@
 						v-for="(item, index) in goods"
 						class="cate-item"
 						:class="{'cate-current': currentIndex === index}"
+						@click="selectCate(index, $event)"
 					>
 						<span class="goods-text">
 							{{item.name}}
@@ -113,6 +114,15 @@ export default {
 				height += item.clientHeight
 				this.listHeight.push(height)
 			})
+		},
+		selectCate(index, event) {
+			// 非better-scroll派发的事件（浏览器原生事件）
+			if (!event._constructed) {
+				return
+			}
+			const goodList = this.$refs.goodList
+			const el = goodList[index]
+			this.goodsScroll.scrollToElement(el, 300)
 		}
 	},
 	created() {
@@ -152,7 +162,6 @@ export default {
 					width: 56px;
 					vertical-align: middle;
 					font-size: 12px;
-    				font-weight: 600;
 				}
 			}
 		}
@@ -172,9 +181,6 @@ export default {
 				display: flex;
 				margin: 18px;
 				padding-bottom: 18px;
-				.cate-current {
-					background: red;
-				}
 				.border();
 				&:last-child {
 					.border-none();
