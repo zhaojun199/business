@@ -53,18 +53,21 @@
 				</ul>
 			</div>
 		</div>
+		<ShopCart/>
 	</div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
 import Back from '@/components/Back/Back.vue'
+import ShopCart from '@/views/Member/Cost/ShopCart.vue'
 import goods from '@static/goods.json'
 
 export default {
 	name: 'member-cost',
 	components: {
 		Back,
+		ShopCart,
 	},
 	data() {
 		return {
