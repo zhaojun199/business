@@ -38,13 +38,16 @@
 										<span>
 											好评率{{food.rating}}%
 										</span>
-										<div class="goods-price">
-											<span class="goods-price-now">￥{{food.price}}</span>
-											<span
-												class="goods-price-old"
-												v-show="food.oldPrice"
-											>￥{{food.oldPrice}}</span>
-										</div>
+									</div>
+									<div class="goods-price">
+										<span class="goods-price-now">￥{{food.price}}</span>
+										<span
+											class="goods-price-old"
+											v-show="food.oldPrice"
+										>￥{{food.oldPrice}}</span>
+									</div>
+									<div class="cart-control-wrapper">
+										<CartControl :good="food" />
 									</div>
 								</div>
 							</li>
@@ -53,14 +56,15 @@
 				</ul>
 			</div>
 		</div>
-		<ShopCart/>
+		<ShopCart :selectGoods="selectGoods" />
 	</div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
 import Back from '@/components/Back/Back.vue'
-import ShopCart from '@/views/Member/Cost/ShopCart.vue'
+import ShopCart from '@/components/ShopCart/ShopCart.vue'
+import CartControl from '@/components/CartControl/CartControl.vue'
 import goods from '@static/goods.json'
 
 export default {
@@ -68,6 +72,7 @@ export default {
 	components: {
 		Back,
 		ShopCart,
+		CartControl,
 	},
 	data() {
 		return {
@@ -89,7 +94,10 @@ export default {
 				return false
 			})
 			return index
-		} 
+		},
+		selectGoods() {
+
+		}
 	},
 	methods: {
 		getGoodList() {
@@ -152,12 +160,12 @@ export default {
 				display: table;
 				height: 54px;
 				line-height: 14px;
-    			margin: 12px;
+				margin: 12px;
 				&.cate-current {
 					background: #fff;
-          			font-weight: 700;
-          			padding: 0 12px;
-          			margin: 0;
+					font-weight: 700;
+					padding: 0 12px;
+					margin: 0;
 				}
 				.goods-text {
 					display: table-cell;
@@ -195,6 +203,7 @@ export default {
 				}
 				.goods-content {
 					flex: 1;
+					position: relative;
 					.goods-name {
 						margin: 2px 0 8px 0;
 						height: 14px;
@@ -230,6 +239,11 @@ export default {
 							font-size: 10px;
 							color: rgb(147, 153, 159);
 						}
+					}
+					.cart-control-wrapper {
+						position: absolute;
+						right: 0;
+						bottom: -10px;
 					}
 				}
 			}
