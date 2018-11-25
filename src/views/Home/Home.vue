@@ -2,8 +2,9 @@
 	<div class="home">
 		<mt-swipe :auto="0" :show-indicators="false">
 			<mt-swipe-item>
-				<img :src="require('@static/img/home.jpg')" width="100%" height="100%">
+				<!-- <img :src="require('@static/img/home.jpg')" width="100%" height="100%"> -->
 				<!-- <img :src="require('@/assets/logo.png')" width="100%" height="100%"> -->
+				<img src="http://img.ivsky.com/img/tupian/pre/201805/09/titian-005.jpg" width="100%" height="100%">
 			</mt-swipe-item>
 		</mt-swipe>
 		<div class="item-group">
