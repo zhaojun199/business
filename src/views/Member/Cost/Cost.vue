@@ -56,7 +56,7 @@
 				</ul>
 			</div>
 		</div>
-		<ShopCart :selectGoods="selectGoods" />
+		<ShopCart :select_goods="selectGoods" />
 	</div>
 </template>
 
@@ -96,8 +96,16 @@ export default {
 			return index
 		},
 		selectGoods() {
-
-		}
+			let selected_goods = []
+			this.goods.forEach((good) => {
+				good.foods.forEach((item) => {
+					if (item.count) {
+						selected_goods.push(item)
+					}
+				})
+			})
+			return selected_goods
+		},
 	},
 	methods: {
 		getGoodList() {
