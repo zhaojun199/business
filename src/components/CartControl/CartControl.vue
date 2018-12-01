@@ -100,7 +100,7 @@ export default {
 		display: inline-block;
 		vertical-align: top;
 		width: 12px;
-		padding-top: 4px;
+		padding-top: 2px;
 		line-height: 24px;
 		text-align: center;
 		font-size: 12px;

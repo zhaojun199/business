@@ -1,7 +1,7 @@
 import Member from '@home/Member/Add/Add.vue'
 import Information from '@home/Member/Information/Information.vue'
 import Point from '@home/Member/Point/Point.vue'
-import Cost from '@home/Member/Cost/Cost.vue'
+// import Cost from '@home/Member/Cost/Cost.vue'
 
 export default [{
 	path: '/member/add',
@@ -27,7 +27,7 @@ export default [{
 }, {
 	path: '/member/:user/cost',
 	name: 'member-cost',
-	component: Cost,
+	component: () => import('@home/Member/Cost/Cost'),
 	meta: {
 		title: '消费'
 	},

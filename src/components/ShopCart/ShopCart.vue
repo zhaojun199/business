@@ -1,7 +1,7 @@
 <template>
 	<div class="shopcart">
-		<div class="st-content" @click="toggleList">
-			<div class="st-content-left">
+		<div class="st-content">
+			<div class="st-content-left" @click="toggleList">
 				<div class="st-logo-wrapper">
 					<div class="st-logo" :class="{'st-logo-active': !!totalPrice}">
 						<span class="st-num" v-show="!!totalCount">{{totalCount}}</span>
@@ -11,7 +11,7 @@
 				<div class="st-price" :class="{'st-price-active': !!totalPrice}">￥{{totalPrice}}</div>
 				<div class="st-desc">{{payDesc}}</div>
 			</div>
-			<div class="st-content-right">
+			<div class="st-content-right" @click="toPay">
 				<div class="st-pay" :class="{'st-pay-active': !!totalPrice}">去结算</div>
 			</div>
 		</div>
@@ -19,9 +19,9 @@
 			<div class="st-list" v-show="listShow">
 				<div class="st-list-header">
 					<h1 class="st-title">购物车</h1>
-					<span class="st-empty">清空</span>
+					<span class="st-empty" @click="empty">清空</span>
 				</div>
-				<div class="st-list-content">
+				<div class="st-list-content" ref="listContent">
 					<ul>
 						<li class="st-goods" v-for="goods in select_goods">
 							<span class="st-name">{{goods.name}}</span>
@@ -39,6 +39,7 @@
 	</div>
 </template>
 <script>
+import BScroll from 'better-scroll'
 import CartControl from '@/components/CartControl/CartControl.vue'
 export default {
 	name: 'shopcart',
@@ -76,6 +77,17 @@ export default {
 				this.fold = true
 				return false
 			}
+			if (!this.fold) {
+				this.$nextTick(() => {
+					if (!this.scroll) {
+						this.scroll = new BScroll(this.$refs.listContent, {
+							click: true,
+						})
+					} else {
+						this.scroll.refresh()
+					}
+				})
+			}
 			return !this.fold
 		}
 	},
@@ -85,6 +97,29 @@ export default {
 				return;
 			}
 			this.fold = !this.fold
+		},
+		async empty() {
+			let res = await this
+				.$messageBox({
+					title: '提示',
+					message: '确定清空购物车?',
+					showCancelButton: true,
+				})
+			if (res === 'confirm') {
+				this.select_goods
+					.forEach(good => good.count = 0)
+			} else if (res === 'cancel') {
+				// do nothing
+			}
+		},
+		toPay() {
+			this
+				.$messageBox({
+					title: '结算金额',
+					message: this.totalPrice,
+				})
+			// TODO
+			// 进入结算页
 		}
 	}
 }
@@ -195,6 +230,7 @@ export default {
 		z-index: -1;
 		width: 100%;
 		opacity: 1;
+		filter: drop-shadow(0px 5px 20px #ccc);
 		transition: all 0.5s;
 		transform: translate3d(0, 0, 0);
 		&.fold-enter, &.fold-leave-active {
@@ -213,7 +249,7 @@ export default {
 			}
 			.st-empty {
 				float: right;
-				font-size: 12px;
+				font-size: 14px;
 				color: @primary-color;
 			}
 		}

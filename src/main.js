@@ -8,7 +8,8 @@ import '@static/css/mint-ui-recover'	//	重写mint-ui样式
 import '@static/css/basic'	//	基本样式
 import {
 	Button, Cell, Tabbar, TabItem, Swipe, SwipeItem, Search, Field,
-	Popup, Picker, IndexList, IndexSection, CellSwipe, DatetimePicker
+	Popup, Picker, IndexList, IndexSection, CellSwipe, DatetimePicker,
+	MessageBox,
 } from 'mint-ui'
 
 Vue.component(Button.name, Button)
@@ -25,6 +26,9 @@ Vue.component(IndexList.name, IndexList)
 Vue.component(IndexSection.name, IndexSection)
 Vue.component(CellSwipe.name, CellSwipe)
 Vue.component(DatetimePicker.name, DatetimePicker)
+
+// 挂载到全局Vue
+Vue.prototype.$messageBox = MessageBox
 
 Vue.config.productionTip = false
 
