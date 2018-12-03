@@ -131,7 +131,7 @@ export default {
 	position: fixed;
 	left: 0;
 	bottom: 0;
-	z-index: 1;
+	z-index: 20;
 	width: 100%;
 	height: 48px;
 	.st-content {

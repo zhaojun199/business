@@ -24,7 +24,7 @@
 					<li v-for="item in goods" class="goods-list" ref="goodList">
 						<h1 class="goods-title">{{item.name}}</h1>
 						<ul>
-							<li v-for="food in item.foods" class="goods-item">
+							<li @click="selectGood(food, $event)" v-for="food in item.foods" class="goods-item">
 								<div class="goods-icon">
 									<img :src="food.icon" alt=""/>
 								</div>
@@ -57,14 +57,16 @@
 			</div>
 		</div>
 		<ShopCart :select_goods="selectGoods" />
+		<Good :good="selected_good" ref="good" />
 	</div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
-import Back from '@/components/Back/Back.vue'
-import ShopCart from '@/components/ShopCart/ShopCart.vue'
-import CartControl from '@/components/CartControl/CartControl.vue'
+import Back from '@/components/Back/Back'
+import ShopCart from '@/components/ShopCart/ShopCart'
+import CartControl from '@/components/CartControl/CartControl'
+import Good from '@/components/Good/Good'
 import goods from '@static/goods.json'
 
 export default {
@@ -73,12 +75,14 @@ export default {
 		Back,
 		ShopCart,
 		CartControl,
+		Good,
 	},
 	data() {
 		return {
 			goods: [],
 			listHeight: [],
 			scrollY: 0,
+			selected_good: {a: 1},
 		}
 	},
 	computed: {
@@ -95,6 +99,7 @@ export default {
 			})
 			return index
 		},
+		// 购物车选中的商品
 		selectGoods() {
 			let selected_goods = []
 			this.goods.forEach((good) => {
@@ -134,6 +139,7 @@ export default {
 				this.listHeight.push(height)
 			})
 		},
+		// 选择分类 -> 滚动到分类
 		selectCate(index, event) {
 			// 非better-scroll派发的事件（浏览器原生事件）
 			if (!event._constructed) {
@@ -142,7 +148,15 @@ export default {
 			const goodList = this.$refs.goodList
 			const el = goodList[index]
 			this.goodsScroll.scrollToElement(el, 300)
-		}
+		},
+		// 点击商品查看详情
+		selectGood(good) {
+			if (!event._constructed) {
+				return
+			}
+			this.selected_good = good
+			this.$refs.good.show()
+		},
 	},
 	created() {
 		this.getGoodList()
