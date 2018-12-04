@@ -1,5 +1,5 @@
 <template>
-	<div class="cart-control">
+	<div class="cart-control" @click.stop>
 		<transition name="move">
 			<div
 				class="cc-decrease"

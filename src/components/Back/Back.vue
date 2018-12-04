@@ -1,5 +1,5 @@
 <template>
-	<div class="back" @click="$router.go(-1)">
+	<div class="header-back" @click="$router.go(-1)">
 		<i class="iconfont icon-you"/>
 		<!-- <div>{{title}}</div> -->
 	</div>
@@ -19,7 +19,7 @@ export default {
 
 <style lang="less">
 @import '../../../static/css/variable';
-.back {
+.header-back {
 	transform: rotate(180deg);
 	padding: 0.85rem;
 	width: 3.8rem;
