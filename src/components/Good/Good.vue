@@ -29,7 +29,7 @@
 					<div class="good-buy" @click="addFirst($event)" v-show="!good.count">加入购物车</div>
 				</div>
 				<Split v-show="good.info" />
-				<div class="good-info">
+				<div class="good-info" v-show="good.info">
 					<h1 class="good-title">商品信息</h1>
 					<p class="good-text">{{good.info}}</p>
 				</div>
@@ -66,7 +66,6 @@ export default {
 			this.show_flag = !this.show_flag
 			this.$nextTick(() => {
 				if (!this.scroll) {
-					log(this.$refs.good)
 					this.scroll = new BScroll(this.$refs.good, { click: true })
 				} else {
 					this.scroll.refresh()
